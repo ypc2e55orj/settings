@@ -1,0 +1,184 @@
+###
+### Tools/Utils
+###
+
+## dein.vim
+# Dein.vim is dark powerd Vim/Neovim plugin manager.
+# https://github.com/shougo/dein.vim
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+## deol.nvim
+# Dark powered shell interface for NeoVim and Vim8.
+# https://github.com/shougo/deol.nvim
+[[plugins]]
+repo = 'Shougo/deol.nvim'
+
+## defx.nvim
+# file_folder The dark powered file explorer implementation
+# https://github.com/Shougo/defx.nvim
+[[plugins]]
+repo = 'Shougo/defx.nvim'
+
+## vim-closetag
+# Auto close (X)HTML tags
+# https://github.com/alvan/vim-closetag
+[[plugins]]
+repo = 'alvan/vim-closetag'
+
+## lexima.vim
+# Auto close parentheses and repeat by dot dot dot...
+# https://github.com/cohama/lexima.vim
+[[plugins]]
+repo = 'cohama/lexima.vim'
+
+## vim-easy-align
+# A Vim alignment plugin
+# https://github.com/junegunn/vim-easy-align
+[[plugins]]
+repo = 'junegunn/vim-easy-align'
+
+## vim-precious
+# Vim constext filetype
+# https://github.com/osyo-manga/vim-precious
+[[plugins]]
+repo = 'osyo-manga/vim-precious'
+
+## context_filetype.vim
+# Context filetype library for Vim script
+# https://github.com/Shougo/context_filetype.vim
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+## vim-fugitive
+# fugitive.vim: A Git wrapper so awesome, it should be illegal
+# https://www.vim.org/scripts/script.php?script_id=2975
+# https://github.com/tpope/vim-fugitive
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+## editorconfig-vim
+# EditorConfig plugin for Vim
+# http://editorconfig.org
+# https://github.com/editorconfig/editorconfig-vim
+[[plugins]]
+repo = 'editorconfig/editorconfig-vim'
+
+## deoplete.nvim
+# stars Dark powered asynchronous completion framework for neovim/Vim8
+# https://github.com/shougo/deoplete.nvim
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+
+## LanguageClient-neovim
+# Language Server Protocol (LSP) support for vim and neovim.
+# https://github.com/autozimu/LanguageClient-neovim
+[[plugins]]
+repo = 'autozimu/LanguageClient-neovim'
+rev = 'next'
+build = 'bash install.sh'
+
+## ale
+# Asynchronous linting/fixing for Vim and Language Server Protocol (LSP) integration
+# https://github.com/w0rp/ale
+[[plugins]]
+repo = 'w0rp/ale'
+
+## echodoc.vim
+# Print documents in echo area.
+# https://github.com/shougo/echodoc.vim
+[[plugins]]
+repo = 'Shougo/echodoc.vim'
+
+###
+### Appearance
+###
+
+## neovim-colors-solarized-truecolor-only
+# precision colorscheme for the vim text editor http://ethanschoonover.com/solarized
+# https://github.com/frankier/neovim-colors-solarized-truecolor-only
+[[plugins]]
+repo = 'frankier/neovim-colors-solarized-truecolor-only'
+
+## lightline.vim
+# A light and configurable statusline/tabline plugin for Vim
+# http://www.vim.org/scripts/script.php?script_id=5294
+# https://github.com/itchyny/lightline.vim
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+
+## lightline-ale
+# ALE indicator for the lightline vim plugin
+# https://github.com/maximbaz/lightline-ale
+[[plugins]]
+repo = 'maximbaz/lightline-ale'
+
+## rainbow
+# Rainbow Parentheses Improved, shorter code, no level limit, smooth and fast, powerful configuration.
+# https://github.com/luochen1990/rainbow
+[[plugins]]
+repo = 'luochen1990/rainbow'
+
+## vim-gitgutter
+# A Vim plugin which shows a git diff in the gutter (sign column) and stages/undoes hunks.
+# https://github.com/airblade/vim-gitgutter
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+
+## vim-devicons
+# symbols Adds file type glyphs/icons to popular Vim plugins: NERDTree, vim-airline, Powerline, Unite, vim-startify and more
+# https://github.com/ryanoasis/vim-devicons
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
+
+## defx-icons
+# Filetype icons for https://github.com/Shougo/defx.nvim
+# https://github.com/kristijanhusak/defx-icons
+[[plugins]]
+repo = 'kristijanhusak/defx-icons'
+
+###
+### Language Plugins
+###
+
+## neco-syntax
+# Syntax source for neocomplete/deoplete/ncm
+# https://github.com/shougo/neco-syntax
+[[plugins]]
+repo = 'Shougo/neco-syntax'
+
+## yajs.vim
+# YAJS.vim: Yet Another JavaScript Syntax for Vim
+# http://www.vim.org/scripts/script.php?script_id=4974
+# https://github.com/othree/yajs.vim
+[[plugins]]
+repo = 'othree/yajs.vim'
+on_ft = ['javascript']
+
+## yats.vim
+# Yet Another TypeScript Syntax: The most advanced TypeScript Syntax Highlighting in Vim
+# https://github.com/HerringtonDarkholme/yats.vim
+[[plugins]]
+repo = 'HerringtonDarkholme/yats.vim'
+on_ft = ['typescript']
+
+## vim-toml
+# Vim syntax for TOML
+# https://github.com/cespare/vim-toml
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = ['toml']
+
+## rust.vim
+# Vim configuration for Rust.
+# https://github.com/rust-lang/rust.vim
+[[plugins]]
+repo = 'rust-lang/rust.vim'
+on_ft = ['rust']
+
+## haskell-vim
+# Custom Haskell Vimscripts
+# https://github.com/neovimhaskell/haskell-vim
+[[plugins]]
+repo = 'neovimhaskell/haskell-vim'
+on_ft = ['haskell']
