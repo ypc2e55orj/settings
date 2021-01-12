@@ -1,5 +1,22 @@
+## PATH
+# n (node)
+export N_PREFIX=~/.n
+PATH=$N_PREFIX/bin:$PATH
+# cabal (haskell)
+PATH=~/.cabal/bin:$PATH
+# ghcup (haskell)
+PATH=~/.ghcup/bin:$PATH
+# stack (haskell)
+PATH=$(~/.local/bin/stack path --compiler-bin):$PATH
+# cargo (rust)
+PATH=~/.cargo/bin:$PATH
+# user local
+PATH=~/.local/bin:$PATH
+
+export PATH
+
 ## zsh compile
-if [ ! -e "~/.zshrc.zwc" -o "~/.zshrc.zwc" -ot "${ZDOTDIR}/.zshrc" ];then
+if [ ! -e "${ZDOTDIR}/.zshrc.zwc" -o "${ZDOTDIR}/.zshrc.zwc" -ot "${ZDOTDIR}/.zshrc" ];then
     zcompile ${ZDOTDIR}/.zshrc
 fi
 
@@ -14,9 +31,9 @@ compinit; colors;
 setopt prompt_subst auto_menu auto_list auto_cd extended_history hist_ignore_dups hist_save_no_dups hist_reduce_blanks share_history
 
 ## load zsh plugins installed by pacman
-source ${ZDOTDIR}/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ${ZDOTDIR}/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
-source ${ZDOTDIR}/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source "${ZDOTDIR}/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "${ZDOTDIR}/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh"
+source "${ZDOTDIR}/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 ## zsh style
 # uppercase and lowercase are not distinguished
@@ -44,7 +61,7 @@ _prompt_precmd() {
     # exit code
     local exit_code=$?
     # exit color
-    if [ ! ${exit_code} -eq 0 ];then
+    if [ ! $exit_code -eq 0 ];then
         local exit_color="%F{magenta}"
     else
         local exit_color="%F{cyan}"
@@ -67,12 +84,6 @@ _prompt_precmd() {
     RPROMPT="%K{black} $(date +"%H:%M:%S") %k"
 }
 add-zsh-hook precmd _prompt_precmd
-
-## TITLE
-_title_precmd() {
-    echo -ne "\033]0;$USER@$HOST: $(pwd) - ${SHELL#/bin/}\007"
-}
-add-zsh-hook precmd _title_precmd
 
 ## load Solarized LS_COLORS
 if [ ! -e "~/.dir_colors" ];then
