@@ -7,7 +7,9 @@ PATH=~/.cabal/bin:$PATH
 # ghcup (haskell)
 PATH=~/.ghcup/bin:$PATH
 # stack (haskell)
-PATH=$(~/.local/bin/stack path --compiler-bin):$PATH
+if (builtin command -v ~/.local/bin/stack > /dev/null);then
+    PATH=$(~/.local/bin/stack path --compiler-bin):$PATH
+fi
 # cargo (rust)
 PATH=~/.cargo/bin:$PATH
 # user local
