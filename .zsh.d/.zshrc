@@ -1,22 +1,3 @@
-## PATH
-# n (node)
-export N_PREFIX=~/.n
-PATH=$N_PREFIX/bin:$PATH
-# cabal (haskell)
-PATH=~/.cabal/bin:$PATH
-# ghcup (haskell)
-PATH=~/.ghcup/bin:$PATH
-# stack (haskell)
-if (builtin command -v ~/.local/bin/stack > /dev/null);then
-    PATH=$(~/.local/bin/stack path --compiler-bin):$PATH
-fi
-# cargo (rust)
-PATH=~/.cargo/bin:$PATH
-# user local
-PATH=~/.local/bin:$PATH
-
-export PATH
-
 ## zsh compile
 if [ ! -e "${ZDOTDIR}/.zshrc.zwc" -o "${ZDOTDIR}/.zshrc.zwc" -ot "${ZDOTDIR}/.zshrc" ];then
     zcompile ${ZDOTDIR}/.zshrc
@@ -109,4 +90,4 @@ alias lla="ls -la"
 # df
 alias df="df --human-readable"
 # grep
-alias grep="grep --color=always"
+alias grep="grep --color=auto"
