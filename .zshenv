@@ -1,6 +1,8 @@
 export ZDOTDIR=~/.zsh.d
 
 ## PATH
+# user local
+PATH=~/.local/bin:$PATH
 # n (node)
 export N_PREFIX=~/.n
 PATH=$N_PREFIX/bin:$PATH
@@ -9,15 +11,19 @@ PATH=~/.cabal/bin:$PATH
 # ghcup (haskell)
 PATH=~/.ghcup/bin:$PATH
 # stack (haskell)
-if (builtin command -v ~/.local/bin/stack > /dev/null);then
-    PATH=$(~/.local/bin/stack path --compiler-bin):$PATH
+if (builtin command -v stack > /dev/null);then
+    PATH=$(stack path --compiler-bin):$PATH
 fi
 # cargo (rust)
 PATH=~/.cargo/bin:$PATH
-# user local
-PATH=~/.local/bin:$PATH
 
 export PATH
+
+## SDKMAN
+export SDKMAN_DIR=~/.sdkman
+
+## LOCAL
+export LANG=ja_JP.UTF-8
 
 ## WSL2
 if (uname -r | grep "WSL2" > /dev/null);then
@@ -28,8 +34,4 @@ if (uname -r | grep "WSL2" > /dev/null);then
     export QT_IM_MODULE=fcitx
     export XMODIFIERS=@im=fcitx
     export DefaultIMModule=fcitx
-    fcitx > /dev/null 2>&1 &
 fi
-
-## LOCAL
-export LANG=ja_JP.UTF-8

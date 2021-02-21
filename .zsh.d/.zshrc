@@ -1,10 +1,10 @@
 ## zsh compile
-if [ ! -e "${ZDOTDIR}/.zshrc.zwc" -o "${ZDOTDIR}/.zshrc.zwc" -ot "${ZDOTDIR}/.zshrc" ];then
-    zcompile ${ZDOTDIR}/.zshrc
+if [ ! -e "$ZDOTDIR/.zshrc.zwc" -o "$ZDOTDIR/.zshrc.zwc" -ot "$ZDOTDIR/.zshrc" ];then
+    zcompile $ZDOTDIR/.zshrc
 fi
 
 ## fpath
-fpath=(${ZDOTDIR}/plugins/zsh-completions/src $fpath)
+fpath=($ZDOTDIR/plugins/zsh-completions/src $fpath)
 
 ## autoload functions
 autoload -Uz compinit colors vcs_info add-zsh-hook;
@@ -14,9 +14,9 @@ compinit; colors;
 setopt prompt_subst auto_menu auto_list auto_cd extended_history hist_ignore_dups hist_save_no_dups hist_reduce_blanks share_history
 
 ## load zsh plugins installed by pacman
-source "${ZDOTDIR}/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
-source "${ZDOTDIR}/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh"
-source "${ZDOTDIR}/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source "$ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "$ZDOTDIR/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh"
+source "$ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 ## zsh style
 # uppercase and lowercase are not distinguished
@@ -63,20 +63,20 @@ _prompt_precmd() {
         local new_line=""
     fi
 
-    PROMPT="%K{black} %~${new_line}${vcs_info_msg_0_} ${exit_color}%#%f %k"
+    PROMPT="%K{black} %~$new_line$vcs_info_msg_0_ $exit_color%#%f %k"
     RPROMPT="%K{black} $(date +"%H:%M:%S") %k"
 }
 add-zsh-hook precmd _prompt_precmd
 
 ## load Solarized LS_COLORS
-if [ ! -e "~/.dir_colors" ];then
+if [ ! -e ~/.dir_colors ];then
     curl -Ss https://raw.githubusercontent.com/seebi/dircolors-solarized/master/dircolors.ansi-dark > ~/.dir_colors
 fi
 eval $(dircolors ~/.dir_colors)
 
 ## zsh variable
 # HIST
-HISTFILE=${ZDOTDIR}/.zsh_history
+HISTFILE=$ZDOTDIR/.zsh_history
 HISTSIZE=1000
 SAVEHIST=10000
 
@@ -91,3 +91,11 @@ alias lla="ls -la"
 alias df="df --human-readable"
 # grep
 alias grep="grep --color=auto"
+
+## SDKMAN
+[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
+
+## WSL
+if (uname -r | grep "WSL2" > /dev/null);then
+    fcitx 1>/dev/null 2>&1
+fi
