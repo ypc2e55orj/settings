@@ -24,14 +24,3 @@ export SDKMAN_DIR=~/.sdkman
 
 ## LOCAL
 export LANG=ja_JP.UTF-8
-
-## WSL2
-if (uname -r | grep "WSL2" > /dev/null);then
-    # DISPLAY
-    export DISPLAY=$(cat /etc/resolv.conf | awk /nameserver/'{print $2}'):0.0
-    # IME(fcitx)
-    export GTK_IM_MODULE=fcitx
-    export QT_IM_MODULE=fcitx
-    export XMODIFIERS=@im=fcitx
-    export DefaultIMModule=fcitx
-fi

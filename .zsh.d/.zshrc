@@ -95,7 +95,3 @@ alias grep="grep --color=auto"
 ## SDKMAN
 [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
 
-## WSL
-if (uname -r | grep "WSL2" > /dev/null);then
-    fcitx 1>/dev/null 2>&1
-fi
