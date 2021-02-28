@@ -1,0 +1,243 @@
+## variables
+# mod key
+set $mod Mod4
+
+# set monitor
+set $primary DP-2
+set $secondary DP-4
+
+# set workspace
+set $ws1 1
+set $ws2 2
+set $ws3 3
+set $ws4 4
+set $ws5 5
+set $ws6 6
+set $ws7 7
+set $ws8 8
+set $ws9 9
+set $ws10 10
+
+## font
+font pango:Noto Sans CJK JP Bold 9
+
+## keybind
+# kill focused window
+bindsym $mod+q kill
+bindsym $mod+Shift+q kill
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left  focus left
+bindsym $mod+Down  focus down
+bindsym $mod+Up    focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left  move left
+bindsym $mod+Shift+Down  move down
+bindsym $mod+Shift+Up    move up
+bindsym $mod+Shift+Right move right
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# toggle split vertical / horizontal
+bindsym $mod+t split toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# workspace output display
+workspace $ws1 output $primary
+workspace $ws2 output $secondary
+workspace $ws3 output $primary
+workspace $ws4 output $secondary
+workspace $ws5 output $primary
+workspace $ws6 output $secondary
+workspace $ws7 output $primary
+workspace $ws8 output $secondary
+workspace $ws9 output $primary
+workspace $ws10 output $secondary
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+    # These bindings trigger as soon as you enter the resize mode
+    # Pressing left  will shrink the window’s width.
+    # Pressing right will grow   the window’s width.
+    # Pressing up    will shrink the window’s height.
+    # Pressing down  will grow   the window’s height.
+    bindsym h resize grow   width  5 px or 5 ppt
+    bindsym j resize grow   height 5 px or 5 ppt
+    bindsym k resize shrink height 5 px or 5 ppt
+    bindsym l resize shrink width  5 px or 5 ppt
+
+    # same bindings, but for the arrow keys
+    bindsym Left  resize grow   width  5 px or 5 ppt
+    bindsym Down  resize grow   height 5 px or 5 ppt
+    bindsym Up    resize shrink height 5 px or 5 ppt
+    bindsym Right resize shrink width  5 px or 5 ppt
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# XF86 keys
+bindsym XF86MonBrightnessDown exec --no-startup-id "xbacklight -dec 5"
+bindsym XF86MonBrightnessUp   exec --no-startup-id "xbacklight -inc 5"
+bindsym XF86AudioMute         exec --no-startup-id "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+bindsym XF86AudioLowerVolume  exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ -1%"
+bindsym XF86AudioRaiseVolume  exec --no-startup-id" pactl set-sink-volume @DEFAULT_SINK@ +1%"
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# logout
+bindsym $mod+Shift+Control+e exec --no-startup-id "i3-msg exit"
+
+# poweroff
+bindsym $mod+Shift+Control+p exec --no-startup-id "systemctl poweroff"
+
+# reboot
+bindsym $mod+Shift+Control+r exec --no-startup-id "systemctl reboot"
+
+# screen lock
+bindsym $mod+Shift+Control+l exec --no-startup-id "dm-tool lock"
+
+# screen shot
+bindsym --release Print exec --no-startup-id "deepin-screenshot --save-path ~/Pictures"
+bindsym --release $mod+Print exec --no-startup-id "sh -c 'sleep 5; deepin-screenshot --save-path ~/Pictures'"
+
+# start a terminal
+bindsym --release $mod+Return exec "gnome-terminal"
+
+# start firefox
+bindsym --release $mod+Shift+Return exec "firefox"
+
+# start nautilus
+bindsym --release $mod+Control+Return exec "nautilus &"
+
+# start dmenu (a program launcher)
+bindsym --release $mod+d exec --no-startup-id "rofi -modi combi -combi-modi window,drun -combi-hide-mode-prefix -show combi -font 'source code pro medium 12' -theme 'solarized_alternate' -show-icons"
+
+## window
+# window border
+default_border normal 2
+
+# floating window border
+default_floating_border normal 2
+
+## floating
+for_window [class="^(?!(firefox|Gnome-terminal|VirtualBox Machine|Minecraft(?i)|code-oss)).*"] floating enable
+
+## gaps
+gaps outer 15
+gaps inner 5
+
+## startup
+# disable dpms
+exec --no-startup-id "xset s off -dpms"
+
+# compton
+exec --no-startup-id "compton --config ~/.config/compton/compton.conf -b"
+
+# blueman-tray
+exec --no-startup-id "blueman-applet"
+
+# Xfce Notification Daemon
+exec --no-startup-id "/usr/lib/xfce4/notifyd/xfce4-notifyd"
+
+# feh
+#exec --no-startup-id "feh --bg-scale /usr/share/wallpapers/Next/contents/images/2560x1440.png"
+exec --no-startup-id "feh --bg-scale ~/.config/wall.png"
+
+# fcitx
+exec --no-startup-id "fcitx"
+
+# keepassxc
+exec --no-startup-id "keepassxc"
+
+# kdeconnect
+exec --no-startup-id "kdeconnect-indicator"
+
+# slack
+exec --no-startup-id "slack --startup"
+
+# status bar
+bindsym --release $mod+b bar mode toggle
+bar {
+    output $primary
+
+    font pango:Noto Sans CJK JP Bold 9
+
+    position top
+
+    tray_output $primary
+    tray_padding 5
+
+    status_command "i3status-rs ~/.config/i3status-rs/config.toml"
+
+    colors {
+        background "#31363b"
+
+        separator "#7f8c8d"
+
+        statusline "#7f8c8d"
+
+        # border background foreground
+        focused_workspace  "#7f8c8d" "#3daee6" "#eff0f1"
+        active_workspace   "#7f8c8d" "#31363b" "#eff0f1"
+        inactive_workspace "#7f8c8d" "#31363b" "#7f8c8d"
+        binding_mode       "#7f8c8d" "#ef1515" "#eff0f1"
+    }
+}

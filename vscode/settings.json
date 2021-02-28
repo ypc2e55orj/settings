@@ -1,0 +1,39 @@
+{
+    "workbench.colorTheme": "Solarized Dark",
+    "window.zoomLevel": 0,
+    "editor.fontFamily": "'Source Code Pro', 'Noto Sans CJK JP', 'SauseCodePro NF'",
+    "editor.fontSize": 16,
+    "editor.renderWhitespace": "boundary",
+    "files.exclude": {
+        "**/.DS_Store": false,
+        "**/.git": false,
+        "**/.hg": false,
+        "**/.svn": false,
+        "**/CVS": false
+    },
+    "editor.wordWrap": "on",
+    "editor.cursorStyle": "block",
+    "editor.suggestSelection": "first",
+    "files.insertFinalNewline": true,
+    "files.simpleDialog.enable": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "workbench.commandPalette.preserveInput": true,
+    "workbench.quickOpen.preserveInput": true,
+    "workbench.startupEditor": "none",
+    "workbench.colorCustomizations": {
+        "editorCursor.foreground": "#839496"
+    },
+    "window.closeWhenEmpty": true,
+    "workbench.editor.labelFormat": "medium",
+    "editor.cursorBlinking": "solid",
+    "[javascript]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "[vue]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    }
+}
