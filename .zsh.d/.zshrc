@@ -93,4 +93,6 @@ alias df="df --human-readable"
 alias grep="grep --color=auto"
 
 ## SDKMAN
-[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
+if [ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ];then
+    source "$SDKMAN_DIR/bin/sdkman-init.sh"
+fi
