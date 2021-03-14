@@ -63,8 +63,8 @@ _prompt_precmd() {
         local new_line=""
     fi
 
-    PROMPT="%K{black} %~$new_line$vcs_info_msg_0_ $exit_color%#%f %k"
-    RPROMPT="%K{black} $(date +"%H:%M:%S") %k"
+    PROMPT=" %~$new_line$vcs_info_msg_0_ $exit_color%#%f "
+    RPROMPT=" $(date +"%H:%M:%S") "
 }
 add-zsh-hook precmd _prompt_precmd
 
