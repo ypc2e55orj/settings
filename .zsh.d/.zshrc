@@ -68,10 +68,10 @@ _prompt_precmd() {
 }
 add-zsh-hook precmd _prompt_precmd
 
-_title_precmd() {
+_title_chpwd() {
     print -Pn "\e]2; %~ %#\a"
 }
-add-zsh-hook precmd _title_precmd
+add-zsh-hook chpwd _title_chpwd
 
 ## load Solarized LS_COLORS
 if [ ! -e ~/.dir_colors ];then
