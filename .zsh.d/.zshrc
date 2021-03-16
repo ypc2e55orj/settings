@@ -68,6 +68,11 @@ _prompt_precmd() {
 }
 add-zsh-hook precmd _prompt_precmd
 
+_title_precmd() {
+    print -Pn "\e]2; %~ %#\a"
+}
+add-zsh-hook precmd _title_precmd
+
 ## load Solarized LS_COLORS
 if [ ! -e ~/.dir_colors ];then
     curl -Ss https://raw.githubusercontent.com/seebi/dircolors-solarized/master/dircolors.ansi-dark > ~/.dir_colors
