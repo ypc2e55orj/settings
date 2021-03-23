@@ -87,15 +87,13 @@ SAVEHIST=10000
 
 ## alias
 # ls
-alias ls="ls --human-readable --sort=extension --color=auto"
+alias ls="ls -h"
 alias l="ls"
 alias la="ls -a"
 alias ll="ls -l"
 alias lla="ls -la"
 # df
-alias df="df --human-readable"
-# grep
-alias grep="grep --color=auto"
+alias df="df -h"
 
 ## SDKMAN
 if [ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ];then
