@@ -1,3 +1,29 @@
+## PATH
+# if macOS
+if (uname -a | grep "Darwin" > /dev/null);then
+   PATH=/opt/macports/bin:$PATH
+   PATH=/opt/macports/libexec/gnubin:$PATH
+fi
+# user local
+PATH=~/.local/bin:$PATH
+# n (node)
+N_PREFIX=~/.n
+PATH=$N_PREFIX/bin:$PATH
+# cabal (haskell)
+PATH=~/.cabal/bin:$PATH
+# ghcup (haskell)
+PATH=~/.ghcup/bin:$PATH
+# stack (haskell)
+if (builtin command -v stack > /dev/null);then
+    PATH=$(stack path --compiler-bin):$PATH
+fi
+# cargo (rust)
+PATH=~/.cargo/bin:$PATH
+export PATH
+
+## SDKMAN
+SDKMAN_DIR=~/.sdkman
+
 ## zsh compile
 if [ ! -e "$ZDOTDIR/.zshrc.zwc" -o "$ZDOTDIR/.zshrc.zwc" -ot "$ZDOTDIR/.zshrc" ];then
     zcompile $ZDOTDIR/.zshrc
