@@ -19,9 +19,18 @@ if (builtin command -v stack > /dev/null);then
 fi
 # cargo (rust)
 PATH=~/.cargo/bin:$PATH
+
+# pyenv (python)
+export PYENV_ROOT=$HOME/.pyenv
+PATH=$PYENV_ROOT/bin:$PATH
+eval $(pyenv init --path)
+
+# pipenv (python)
+export PYENV_PYTHON=$PYENV_ROOT/shims/python
+
 export PATH
 
-## SDKMAN
+# SDKMAN (jvm)
 SDKMAN_DIR=~/.sdkman
 
 ## zsh compile
