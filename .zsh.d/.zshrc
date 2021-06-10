@@ -7,7 +7,7 @@ fi
 # user local
 PATH=~/.local/bin:$PATH
 # n (node)
-N_PREFIX=~/.n
+export N_PREFIX=~/.n
 PATH=$N_PREFIX/bin:$PATH
 # cabal (haskell)
 PATH=~/.cabal/bin:$PATH
