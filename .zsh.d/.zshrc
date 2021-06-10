@@ -28,6 +28,11 @@ eval $(pyenv init --path)
 # pipenv (python)
 export PYENV_PYTHON=$PYENV_ROOT/shims/python
 
+# Vitis v2020.2 (Xilinx)
+if [ -d /tools/Xilinx/Vitis/2020.2/bin ];then
+    PATH=/tools/Xilinx/Vitis/2020.2/bin:$PATH
+fi
+
 export PATH
 
 # SDKMAN (jvm)
