@@ -38,6 +38,11 @@ export PATH
 # SDKMAN (jvm)
 SDKMAN_DIR=~/.sdkman
 
+# SSH_AUTH_SOCK (ssh-agent, wsl)
+if [ -e /tmp/windows-ssh-agent.sock ];then
+     export SSH_AUTH_SOCK=/tmp/windows-ssh-agent.sock
+fi
+
 ## zsh compile
 if [ ! -e "$ZDOTDIR/.zshrc.zwc" -o "$ZDOTDIR/.zshrc.zwc" -ot "$ZDOTDIR/.zshrc" ];then
     zcompile $ZDOTDIR/.zshrc
