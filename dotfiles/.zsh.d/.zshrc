@@ -23,7 +23,9 @@ PATH=~/.cargo/bin:$PATH
 # pyenv (python)
 export PYENV_ROOT=$HOME/.pyenv
 PATH=$PYENV_ROOT/bin:$PATH
-eval $(pyenv init --path)
+if (command -v pyenv>/dev/null);then
+    eval $(pyenv init --path)
+fi
 
 # pipenv (python)
 export PYENV_PYTHON=$PYENV_ROOT/shims/python
