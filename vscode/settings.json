@@ -1,6 +1,5 @@
 {
     "workbench.colorTheme": "Solarized Dark",
-    "window.zoomLevel": 0,
     "editor.fontFamily": "'Source Code Pro', 'Noto Sans CJK JP', 'SauseCodePro NF'",
     "editor.fontSize": 16,
     "editor.renderWhitespace": "boundary",
@@ -27,13 +26,52 @@
     "window.closeWhenEmpty": true,
     "workbench.editor.labelFormat": "medium",
     "editor.cursorBlinking": "solid",
-    "[javascript]": {
-        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    "terminal.integrated.profiles.windows": {
+        "mingw64": {
+            "overrideName": true,
+            "path": "C:\\tools\\msys64\\usr\\bin\\bash.exe",
+            "env": {
+                "MSYSTEM": "MINGW64",
+                "CHERE_INVOKING": "1"
+            },
+            "args": [
+                "--login",
+                "-i"
+            ]
+        },
+        "mingw32": {
+            "overrideName": true,
+            "path": "C:\\tools\\msys64\\usr\\bin\\bash.exe",
+            "env": {
+                "MSYSTEM": "MINGW32",
+                "CHERE_INVOKING": "1"
+            },
+            "args": [
+                "--login",
+                "-i"
+            ]
+        },
+        "msys": {
+            "overrideName": true,
+            "path": "C:\\tools\\msys64\\usr\\bin\\bash.exe",
+            "env": {
+                "MSYSTEM": "MSYS",
+                "CHERE_INVOKING": "1"
+            },
+            "args": [
+                "--login",
+                "-i"
+            ]
+        }
     },
-    "[vue]": {
-        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    "terminal.integrated.defaultProfile.windows": "mingw64",
+    "files.watcherExclude": {
+        "**/.bloop": true,
+        "**/.metals": true,
+        "**/.ammonite": true
     },
-    "[typescript]": {
-        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-    }
+    "cmake.configureOnOpen": true,
+    "files.autoGuessEncoding": true,
+    "editor.accessibilitySupport": "off"
 }
+
