@@ -19,17 +19,14 @@ if (builtin command -v stack > /dev/null);then
 fi
 # cargo (rust)
 PATH=~/.cargo/bin:$PATH
-
 # pyenv (python)
 export PYENV_ROOT=$HOME/.pyenv
 PATH=$PYENV_ROOT/bin:$PATH
 if (builtin command -v pyenv > /dev/null);then
     eval $(pyenv init --path)
 fi
-
 # pipenv (python)
 export PYENV_PYTHON=$PYENV_ROOT/shims/python
-
 # Vitis v2020.2 (Xilinx)
 if [ -d /tools/Xilinx/Vitis/2020.2/bin ];then
     PATH=/tools/Xilinx/Vitis/2020.2/bin:$PATH
@@ -39,11 +36,9 @@ export PATH
 
 # SDKMAN (java toolchain)
 SDKMAN_DIR=~/.sdkman
-
 if [ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ];then
     source "$SDKMAN_DIR/bin/sdkman-init.sh"
 fi
-
 # if wsl
 if (uname -r | grep WSL > /dev/null);then
     # DISPLAY
