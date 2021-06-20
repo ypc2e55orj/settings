@@ -1,4 +1,4 @@
-## PATH
+## env
 # if macOS
 if (uname -a | grep "Darwin" > /dev/null);then
    PATH=/opt/macports/bin:$PATH
@@ -23,7 +23,7 @@ PATH=~/.cargo/bin:$PATH
 # pyenv (python)
 export PYENV_ROOT=$HOME/.pyenv
 PATH=$PYENV_ROOT/bin:$PATH
-if (command -v pyenv>/dev/null);then
+if (builtin command -v pyenv > /dev/null);then
     eval $(pyenv init --path)
 fi
 
@@ -37,12 +37,21 @@ fi
 
 export PATH
 
-# SDKMAN (jvm)
+# SDKMAN (java toolchain)
 SDKMAN_DIR=~/.sdkman
 
-# SSH_AUTH_SOCK (ssh-agent, wsl)
-if [ -e /tmp/windows-ssh-agent.sock ];then
-     export SSH_AUTH_SOCK=/tmp/windows-ssh-agent.sock
+if [ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ];then
+    source "$SDKMAN_DIR/bin/sdkman-init.sh"
+fi
+
+# if wsl
+if (uname -r | grep WSL > /dev/null);then
+    # DISPLAY
+    export DISPLAY=$(cat /etc/resolv.conf | awk /^nameserver/'{ print $2 }'):0.0
+    # SSH_AUTH_SOCK (ssh-agent, wsl)
+    if [ -e /tmp/windows-ssh-agent.sock ];then
+        export SSH_AUTH_SOCK=/tmp/windows-ssh-agent.sock
+    fi
 fi
 
 ## zsh compile
@@ -133,18 +142,22 @@ HISTSIZE=1000
 SAVEHIST=10000
 
 ## alias
+_check_gnu() {
+    $1 --version | grep -i gnu > /dev/null
+}
 # ls
-alias ls="ls --human-readable --sort=extension --color=auto"
-alias l="ls"
-alias la="ls -a"
-alias ll="ls -l"
-alias lla="ls -la"
+if _check_gnu ls;then
+    alias ls="ls --human-readable --sort=extension --color=auto"
+    alias l="ls"
+    alias la="ls -a"
+    alias ll="ls -l"
+    alias lla="ls -la"
+fi
 # df
-alias df="df --human-readable"
+if _check_gnu df;then
+    alias df="df --human-readable"
+fi
 # grep
-alias grep="grep --color=auto"
-
-## SDKMAN
-if [ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ];then
-    source "$SDKMAN_DIR/bin/sdkman-init.sh"
+if _check_gnu grep;then
+    alias grep="grep --color=auto"
 fi
