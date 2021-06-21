@@ -1,6 +1,6 @@
 ## env
 # if macOS
-if (uname -a | grep "Darwin" > /dev/null);then
+if (uname -a | grep Darwin > /dev/null);then
    PATH=/opt/macports/bin:$PATH
    PATH=/opt/macports/libexec/gnubin:$PATH
 fi
@@ -27,19 +27,15 @@ if (builtin command -v pyenv > /dev/null);then
 fi
 # pipenv (python)
 export PYENV_PYTHON=$PYENV_ROOT/shims/python
-# Vitis v2020.2 (Xilinx)
-if [ -d /tools/Xilinx/Vitis/2020.2/bin ];then
-    PATH=/tools/Xilinx/Vitis/2020.2/bin:$PATH
-fi
 
 export PATH
 
-# SDKMAN (java toolchain)
+# SDKMAN (jvm toolchain)
 SDKMAN_DIR=~/.sdkman
 if [ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ];then
     source "$SDKMAN_DIR/bin/sdkman-init.sh"
 fi
-# if wsl
+# DISPLAY, SSH_AUTH_SOCK (WSL)
 if (uname -r | grep WSL > /dev/null);then
     # DISPLAY
     export DISPLAY=$(cat /etc/resolv.conf | awk /^nameserver/'{ print $2 }'):0.0
@@ -57,6 +53,11 @@ fi
 ## fpath
 fpath=($ZDOTDIR/plugins/zsh-completions/src $fpath)
 
+## zsh history
+HISTFILE=$ZDOTDIR/.zsh_history
+HISTSIZE=1000
+SAVEHIST=10000
+
 ## autoload functions
 autoload -Uz compinit colors vcs_info add-zsh-hook;
 compinit; colors;
@@ -65,9 +66,9 @@ compinit; colors;
 setopt prompt_subst auto_menu auto_list auto_cd extended_history hist_ignore_dups hist_save_no_dups hist_reduce_blanks share_history
 
 ## load zsh plugins
-source "$ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
-source "$ZDOTDIR/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh"
-source "$ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $ZDOTDIR/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+source $ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 ## zsh style
 # uppercase and lowercase are not distinguished
@@ -129,12 +130,6 @@ if [ ! -e ~/.dir_colors ];then
     curl -Ss https://raw.githubusercontent.com/seebi/dircolors-solarized/master/dircolors.ansi-dark > ~/.dir_colors
 fi
 eval $(dircolors ~/.dir_colors)
-
-## zsh variable
-# HIST
-HISTFILE=$ZDOTDIR/.zsh_history
-HISTSIZE=1000
-SAVEHIST=10000
 
 ## alias
 _check_gnu() {
