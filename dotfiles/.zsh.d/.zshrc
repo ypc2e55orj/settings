@@ -37,12 +37,16 @@ if [ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ];then
 fi
 # DISPLAY, SSH_AUTH_SOCK (WSL)
 if (uname -r | grep WSL > /dev/null);then
-    # DISPLAY
-    export DISPLAY=$(cat /etc/resolv.conf | awk /^nameserver/'{ print $2 }'):0.0
     # SSH_AUTH_SOCK (ssh-agent, wsl)
     if [ -e /tmp/windows-ssh-agent.sock ];then
         export SSH_AUTH_SOCK=/tmp/windows-ssh-agent.sock
     fi
+    # Input Method
+    export GTK_IM_MODULE=fcitx
+    export QT_IM_MODULE=fcitx
+    export XMODIFIERS=@im=fcitx
+    export DefaultIMMmodule=fcitx
+    (fcitx-autostart > /dev/null 2>&1 &) 
 fi
 
 ## zsh compile
