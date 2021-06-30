@@ -32,11 +32,13 @@ export PATH
 
 # SDKMAN (jvm toolchain)
 SDKMAN_DIR=~/.sdkman
-if [ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ];then
-    source "$SDKMAN_DIR/bin/sdkman-init.sh"
+if [ -s $SDKMAN_DIR/bin/sdkman-init.sh ];then
+    source $SDKMAN_DIR/bin/sdkman-init.sh
 fi
 # DISPLAY, SSH_AUTH_SOCK (WSL)
 if (uname -r | grep WSL > /dev/null);then
+    # DISPLAY
+    export DISPLAY=$(cat /etc/resolv.conf | awk /^nameserver/'{print $2}'):0.0
     # SSH_AUTH_SOCK (ssh-agent, wsl)
     if [ -e /tmp/windows-ssh-agent.sock ];then
         export SSH_AUTH_SOCK=/tmp/windows-ssh-agent.sock
@@ -50,7 +52,7 @@ if (uname -r | grep WSL > /dev/null);then
 fi
 
 ## zsh compile
-if [ ! -e "$ZDOTDIR/.zshrc.zwc" -o "$ZDOTDIR/.zshrc.zwc" -ot "$ZDOTDIR/.zshrc" ];then
+if [ ! -e $ZDOTDIR/.zshrc.zwc -o $ZDOTDIR/.zshrc.zwc -ot $ZDOTDIR/.zshrc ];then
     zcompile $ZDOTDIR/.zshrc
 fi
 
@@ -109,7 +111,7 @@ _prompt_precmd() {
     # current directory
     local _pwd=$(pwd)
     # terminal half width
-    local half_width=$(( $(tput cols) / 2 ))
+    local half_width=$[$(tput cols) / 2]
 
     # current directory character counts > terminal half width
     if [ ${#_pwd} -ge $half_width ];then
