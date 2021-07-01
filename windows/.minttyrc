@@ -39,4 +39,5 @@ BoldCyan=147,161,161
 White=238,232,213
 BoldWhite=253,246,227
 CtrlShiftShortcuts=yes
-
+CopyOnSelect=no
+TrimSelection=no
