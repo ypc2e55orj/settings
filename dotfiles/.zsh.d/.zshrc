@@ -37,8 +37,12 @@ if [ -s $SDKMAN_DIR/bin/sdkman-init.sh ];then
 fi
 # DISPLAY, SSH_AUTH_SOCK (WSL)
 if (uname -r | grep WSL > /dev/null);then
+    # Get Windows IPv4 Address
+    WINDOWS_IPV4_ADDRESS=$(cat /etc/resolv.conf | awk /^nameserver/'{print $2}')
     # DISPLAY
-    export DISPLAY=$(cat /etc/resolv.conf | awk /^nameserver/'{print $2}'):0.0
+    export DISPLAY=$WINDOWS_IPV4_ADDRESS:0.0
+    # PULSE_SERVER
+    export PULSE_SERVER=tcp:$WINDOWS_IPV4_ADDRESS
     # SSH_AUTH_SOCK (ssh-agent, wsl)
     if [ -e /tmp/windows-ssh-agent.sock ];then
         export SSH_AUTH_SOCK=/tmp/windows-ssh-agent.sock
