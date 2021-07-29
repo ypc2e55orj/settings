@@ -21,6 +21,7 @@ fi
 PATH=~/.cargo/bin:$PATH
 # pyenv (python)
 export PYENV_ROOT=$HOME/.pyenv
+export PIPENV_VENV_IN_PROJECT=true
 PATH=$PYENV_ROOT/bin:$PATH
 if (builtin command -v pyenv > /dev/null);then
     eval $(pyenv init --path)
