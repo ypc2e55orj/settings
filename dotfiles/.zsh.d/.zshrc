@@ -42,6 +42,11 @@ if (uname -r | grep WSL > /dev/null);then
     WINDOWS_IPV4_ADDRESS=$(cat /etc/resolv.conf | awk /^nameserver/'{print $2}')
     # DISPLAY
     export DISPLAY=$WINDOWS_IPV4_ADDRESS:0.0
+    # SCALE (xps13 only)
+    if [ $HOST = xps13 ];then
+        export GDK_SCALE=2
+        export QT_SCALE_FACTOR=2
+    fi
     # PULSE_SERVER
     export PULSE_SERVER=tcp:$WINDOWS_IPV4_ADDRESS
     # SSH_AUTH_SOCK (ssh-agent, wsl)
