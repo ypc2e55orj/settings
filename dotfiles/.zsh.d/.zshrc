@@ -101,7 +101,7 @@ add-zsh-hook precmd vcs_info
 _prompt_precmd() {
     local exit_code=$?
     local exit_color
-    [ ! $exit_code -eq 0 ] && exit_color="%F{cyan}" || exit_color="%F{magenta}"
+    [ $exit_code -eq 0 ] && exit_color="%F{cyan}" || exit_color="%F{magenta}"
 
     local new_line
     [ $#PWD -lt $[$(tput cols) / 2] ] && new_line="" || new_line=" "$'\n'" "
