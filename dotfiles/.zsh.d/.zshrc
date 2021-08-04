@@ -25,17 +25,15 @@ export PATH
 
 # DISPLAY, SSH_AUTH_SOCK (WSL)
 if (uname -r | grep WSL > /dev/null);then
-    # Get Windows IPv4 Address
-    WINDOWS_IPV4_ADDRESS=$(cat /etc/resolv.conf | awk /^nameserver/'{print $2}')
     # DISPLAY
-    export DISPLAY=$WINDOWS_IPV4_ADDRESS:0.0
+    export DISPLAY=${WSL_HOST_IP:=$(cat /etc/resolv.conf | awk /^nameserver/'{print $2}')}:0.0
     # SCALE (xps13 only)
     if [ $HOST = xps13 ];then
         export GDK_SCALE=2
         export QT_SCALE_FACTOR=2
     fi
     # PULSE_SERVER
-    export PULSE_SERVER=tcp:$WINDOWS_IPV4_ADDRESS
+    export PULSE_SERVER=tcp:$WSL_HOST_IP
     # SSH_AUTH_SOCK (ssh-agent, wsl)
     [ -e /tmp/windows-ssh-agent.sock ] && export SSH_AUTH_SOCK=/tmp/windows-ssh-agent.sock
     # Input Method
