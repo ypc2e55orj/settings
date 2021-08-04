@@ -26,6 +26,8 @@ PATH=$PYENV_ROOT/bin:$PATH
 if (builtin command -v pyenv > /dev/null);then
     eval $(pyenv init --path)
 fi
+# go
+PATH=~/.local/go/bin:$PATH
 # pipenv (python)
 export PYENV_PYTHON=$PYENV_ROOT/shims/python
 
