@@ -1,4 +1,4 @@
-﻿function Get-SubnetMask([UInt16]$Prefix) {
+function Get-SubnetMask([UInt16]$Prefix) {
     [UInt16[]]$SubnetMask = 0, 0, 0, 0
     for (($bit = 0), ($index = 0); $bit -lt 32; ($bit++), ($index = $bit -shr 3)) {
         $SubnetMask[$index] = $SubnetMask[$index] -shl 1
@@ -40,7 +40,8 @@ function Set-NetFirewallWSLAllow([string]$DisplayName) {
     | Where-Object {
         ($_.DisplayName -eq $DisplayName) `
             -and ($_.Direction -eq "Inbound") `
-            -and ($_.Profile -eq "Public")
+            -and ($_.Profile -eq "Public") `
+            -and ($_.Action -eq "Allow")
     }
     # if firewall rules are not found, exit
     if ($null -eq $SameDisplayNameFirewallRules) {
@@ -59,7 +60,8 @@ function Set-NetFirewallWSLAllow([string]$DisplayName) {
 
 while($true) {
     if (Get-NetWSLIPAddress) {
-        Set-NetFirewallWSLAllow -DisplayName "x410"
+        Set-NetFirewallWSLAllow -DisplayName "VcXsrv windows xserver"
+        Set-NetFirewallWSLAllow -DisplayName "pulseaudio.exe"
         break
     }
     Start-Sleep -Seconds 1
