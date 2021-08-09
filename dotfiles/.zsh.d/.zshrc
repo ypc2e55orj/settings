@@ -23,7 +23,7 @@ PATH=$PYENV_ROOT/bin:$PATH
 PATH=~/.local/go/bin:$PATH
 export PATH
 
-# DISPLAY, SSH_AUTH_SOCK (WSL)
+# WSL only settings
 if (uname -r | grep WSL > /dev/null);then
     # DISPLAY
     export DISPLAY=${WSL_HOST_IP:=$(cat /etc/resolv.conf | awk /^nameserver/'{print $2}')}:0.0
@@ -34,9 +34,9 @@ if (uname -r | grep WSL > /dev/null);then
     fi
     # PULSE_SERVER
     export PULSE_SERVER=tcp:$WSL_HOST_IP
-    # SSH_AUTH_SOCK (ssh-agent, wsl)
+    # SSH_AUTH_SOCK (stream-connector, Windows SSH Agent to WSL socket)
     [ -e /tmp/windows-ssh-agent.sock ] && export SSH_AUTH_SOCK=/tmp/windows-ssh-agent.sock
-    # Input Method
+    # Input method
     export GTK_IM_MODULE=fcitx
     export QT_IM_MODULE=fcitx
     export XMODIFIERS=@im=fcitx
