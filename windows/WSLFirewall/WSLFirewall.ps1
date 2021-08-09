@@ -60,7 +60,7 @@ function Set-NetFirewallWSLAllow([string]$DisplayName) {
 
 while($true) {
     if (Get-NetWSLIPAddress) {
-        Set-NetFirewallWSLAllow -DisplayName "VcXsrv windows xserver"
+        Set-NetFirewallWSLAllow -DisplayName "x410"
         Set-NetFirewallWSLAllow -DisplayName "pulseaudio.exe"
         break
     }
