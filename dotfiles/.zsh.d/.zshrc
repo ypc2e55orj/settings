@@ -27,6 +27,7 @@ export PATH
 if (uname -r | grep WSL > /dev/null);then
     # DISPLAY
     export DISPLAY=${WSL_HOST_IP:=$(cat /etc/resolv.conf | awk /^nameserver/'{print $2}')}:0.0
+    export LIBGL_ALWAYS_INDIRECT=1
     # SCALE (xps13 only)
     if [ $HOST = xps13 ];then
         export GDK_SCALE=2
