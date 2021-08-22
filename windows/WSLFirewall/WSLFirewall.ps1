@@ -45,11 +45,12 @@ function Set-NetFirewallWSLAllow([string]$DisplayName) {
     }
     # if firewall rules are not found, exit
     if ($null -eq $SameDisplayNameFirewallRules) {
-        throw ("Firewall rule """ + $DisplayName + """ is not found!")
+        "Firewall rule """ + $DisplayName + """ is not found!"
+        return
     }
     # Apply WSL IPv4 address to same display name rules
     foreach ($SameDisplayNameFirewallRule in $SameDisplayNameFirewallRules) {
-        Write-Output ("Applying WSL Network Address(" + $WSLNetworkAddressCIDRString + ") to " + """" + $SameDisplayNameFirewallRule.Name + """")
+        "Applying WSL Network Address(" + $WSLNetworkAddressCIDRString + ") to " + """" + $SameDisplayNameFirewallRule.Name + """"
         Set-NetFirewallRule `
             -Name $SameDisplayNameFirewallRule.Name `
             -EdgeTraversalPolicy Block `
@@ -60,9 +61,8 @@ function Set-NetFirewallWSLAllow([string]$DisplayName) {
 
 while($true) {
     if (Get-NetWSLIPAddress) {
-        Set-NetFirewallWSLAllow -DisplayName "x410"
         Set-NetFirewallWSLAllow -DisplayName "VcXsrv windows xserver"
-        Set-NetFirewallWSLAllow -DisplayName "pulseaudio.exe"
+        Set-NetFirewallWSLAllow -DisplayName "pulseaudio"
         break
     }
     Start-Sleep -Seconds 1
