@@ -21,6 +21,9 @@ PATH=$PYENV_ROOT/bin:$PATH
 (builtin command -v pyenv > /dev/null) && eval $(pyenv init --path)
 # go
 PATH=~/.local/go/bin:$PATH
+# nim
+PATH=~/.nimble/bin:$PATH
+
 export PATH
 
 # WSL only settings
