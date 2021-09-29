@@ -15,10 +15,12 @@ PATH=~/.cargo/bin:$PATH
 # pipenv (python)
 export PYENV_ROOT=$HOME/.pyenv
 export PYENV_PYTHON=$PYENV_ROOT/shims/python
-# pyenv (python)
-export PIPENV_VENV_IN_PROJECT=true
 PATH=$PYENV_ROOT/bin:$PATH
 (builtin command -v pyenv > /dev/null) && eval $(pyenv init --path)
+# pipenv (python)
+export PIPENV_VENV_IN_PROJECT=true
+# petory
+PATH=$HOME/.poetry/bin:PATH
 # go
 PATH=~/.local/go/bin:$PATH
 # nim
@@ -62,6 +64,9 @@ export VISUAL=vim
 # SDKMAN (jvm toolchain)
 SDKMAN_DIR=~/.sdkman
 [ -s $SDKMAN_DIR/bin/sdkman-init.sh ] && source $SDKMAN_DIR/bin/sdkman-init.sh
+
+# gvm (go)
+[ -s ~/.gvm/scripts/gvm ] && source ~/.gvm/scripts/gvm
 
 ## zsh compile
 [ ! -e $ZDOTDIR/.zshrc.zwc -o $ZDOTDIR/.zshrc.zwc -ot $ZDOTDIR/.zshrc ] && zcompile $ZDOTDIR/.zshrc
