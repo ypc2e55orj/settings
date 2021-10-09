@@ -15,12 +15,11 @@ PATH=~/.cargo/bin:$PATH
 # pipenv (python)
 export PYENV_ROOT=$HOME/.pyenv
 export PYENV_PYTHON=$PYENV_ROOT/shims/python
-PATH=$PYENV_ROOT/bin:$PATH
 (builtin command -v pyenv > /dev/null) && eval $(pyenv init --path)
 # pipenv (python)
 export PIPENV_VENV_IN_PROJECT=true
 # petory
-PATH=$HOME/.poetry/bin:PATH
+PATH=$HOME/.poetry/bin:$PATH
 # go
 PATH=~/.local/go/bin:$PATH
 # nim
@@ -67,6 +66,9 @@ SDKMAN_DIR=~/.sdkman
 
 # gvm (go)
 [ -s ~/.gvm/scripts/gvm ] && source ~/.gvm/scripts/gvm
+
+# ros2 galactic
+[ -s /opt/ros/galactic/setup.zsh ] && source /opt/ros/galactic/setup.zsh
 
 ## zsh compile
 [ ! -e $ZDOTDIR/.zshrc.zwc -o $ZDOTDIR/.zshrc.zwc -ot $ZDOTDIR/.zshrc ] && zcompile $ZDOTDIR/.zshrc
