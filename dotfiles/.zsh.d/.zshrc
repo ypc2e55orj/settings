@@ -115,7 +115,10 @@ _prompt_precmd() {
     local new_line
     [ $#PWD -lt $[$(tput cols) / 2] ] && new_line="" || new_line=" "$'\n'" "
 
-    PROMPT=" %~$new_line$vcs_info_msg_0_ $exit_color%#%f "
+    local venv
+    [ -z $VIRTUAL_ENV ] && venv="" || venv="venv($(basename $(dirname $VIRTUAL_ENV))) "
+
+    PROMPT=" $venv%~$new_line$vcs_info_msg_0_ $exit_color%#%f "
     RPROMPT=" $(date +"%H:%M:%S") "
 }
 add-zsh-hook precmd _prompt_precmd
