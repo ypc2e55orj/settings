@@ -15,6 +15,7 @@ PATH=~/.cargo/bin:$PATH
 # pipenv (python)
 export PYENV_ROOT=$HOME/.pyenv
 export PYENV_PYTHON=$PYENV_ROOT/shims/python
+PATH=$PYENV_ROOT/bin:$PATH
 (builtin command -v pyenv > /dev/null) && eval $(pyenv init --path)
 # pipenv (python)
 export PIPENV_VENV_IN_PROJECT=true
@@ -46,7 +47,7 @@ if (uname -r | grep WSL > /dev/null);then
     export QT_IM_MODULE=fcitx
     export XMODIFIERS=@im=fcitx
     export DefaultIMMmodule=fcitx
-    (fcitx-autostart > /dev/null 2>&1 &) 
+    (fcitx-autostart > /dev/null 2>&1 &)
 fi
 
 # fpath
@@ -68,6 +69,7 @@ SDKMAN_DIR=~/.sdkman
 [ -s ~/.gvm/scripts/gvm ] && source ~/.gvm/scripts/gvm
 
 # ros2 galactic
+# export CYCLONEDDS_URI='<CycloneDDS><Domain><General><NetworkInterfaceAddress>wlp0s20f3</NetworkInterfaceAddress></General></Domain></CycloneDDS>'
 [ -s /opt/ros/galactic/setup.zsh ] && source /opt/ros/galactic/setup.zsh
 
 ## zsh compile
@@ -152,3 +154,25 @@ fi
 if _check_gnu grep;then
     alias grep="grep --color=auto"
 fi
+
+_tmux () {
+    if [[ ! -z "$TMUX" ]];then
+        return false;
+    fi
+
+    if ! (tmux ls -F '#{session_name}' > /dev/null);then
+        tmux
+        return true
+    fi
+
+    local attachable=$(join -v 1 <(tmux ls -F '#{session_name}') <(tmux lsc -F '#{session_name}'))
+
+    if [[ "$attachable" == "" ]];then
+        tmux
+        return true
+    fi
+
+    tmux a -t $(echo "$attachable" | head -n 1)
+}
+_tmux
+

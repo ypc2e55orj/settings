@@ -33,10 +33,6 @@ highlight CursorLine cterm=NONE ctermbg=0
 
 augroup VimrcAutocmd
     autocmd!
-    autocmd BufWrite * :silent! :%s/\s\+$//g
+    autocmd BufWrite * :silent! :%s/\(\s\|\t\)\+$//g
 augroup END
-
-
-
-
 
