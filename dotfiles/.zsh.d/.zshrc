@@ -160,7 +160,7 @@ _tmux () {
         return false;
     fi
 
-    if ! (tmux ls -F '#{session_name}' > /dev/null);then
+    if ! (tmux ls -F '#{session_name}' > /dev/null 2>&1);then
         tmux
         return true
     fi
