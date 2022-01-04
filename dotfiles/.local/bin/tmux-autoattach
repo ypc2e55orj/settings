@@ -1,0 +1,23 @@
+#!/bin/bash
+
+_tmux () {
+    if ! (command -v tmux > /dev/null);then
+        return 127
+    elif [[ ! -z $TMUX ]];then
+        return 1;
+    elif ! (tmux ls -F '#{session_name}' > /dev/null 2>&1);then
+        tmux
+        return $?
+    else
+        local attachable=$(join -v 1 <(tmux ls -F '#{session_name}') <(tmux lsc -F '#{session_name}'))
+        if [[ $attachable == "" ]];then
+            tmux
+            return $?
+        else
+            tmux a -t $(echo "$attachable" | head -n 1)
+            return $?
+        fi
+    fi
+}
+_tmux
+
