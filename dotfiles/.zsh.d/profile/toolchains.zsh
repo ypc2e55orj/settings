@@ -11,7 +11,7 @@ export VISUAL=vim
 _rc_add_path ~/.local/go/bin
 
 # haskell
-_rc_add_path ~/.cabal/bin $
+_rc_add_path ~/.cabal/bin
 _rc_add_path ~/.ghcup/bin
 (builtin command -v stack >/dev/null) && _rc_add_path $(stack path --compiler-bin)
 
