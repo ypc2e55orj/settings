@@ -13,6 +13,7 @@ _rc_add_path ~/.local/go/bin
 # haskell
 _rc_add_path ~/.cabal/bin
 _rc_add_path ~/.ghcup/bin
+
 (builtin command -v stack >/dev/null) && _rc_add_path $(stack path --compiler-bin)
 
 # jvm
@@ -31,6 +32,7 @@ _rc_add_path ~/.cargo/bin
 export PIPENV_VENV_IN_PROJECT=true
 export PYENV_ROOT=~/.pyenv
 export PYENV_PYTHON=$PYENV_ROOT/shims/python
+
 _rc_add_path $PYENV_ROOT/bin
 _rc_add_path $PYENV_ROOT/shims
 

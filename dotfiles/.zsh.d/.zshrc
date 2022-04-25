@@ -3,11 +3,27 @@ HISTSIZE=1000
 SAVEHIST=10000
 
 # autoload functions
-autoload -Uz compinit colors vcs_info add-zsh-hook;
-compinit; colors; add-zsh-hook precmd vcs_info;
+autoload -Uz \
+    add-zsh-hook \
+    colors \
+    compinit \
+    vcs_info
+
+add-zsh-hook precmd vcs_info
+colors
+compinit
 
 # options
-setopt prompt_subst auto_menu auto_list auto_cd extended_history hist_ignore_dups hist_save_no_dups hist_reduce_blanks share_history
+setopt \
+    auto_cd \
+    auto_list \
+    auto_menu \
+    extended_history \
+    hist_ignore_dups \
+    hist_reduce_blanks \
+    hist_save_no_dups \
+    prompt_subst \
+    share_history
 
 # keybind
 bindkey -e
