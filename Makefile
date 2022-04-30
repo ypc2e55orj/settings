@@ -1,3 +1,3 @@
 .PHONY: install
 install:
-	zsh -c 'cp -rv dotfiles/.* ~'
+	zsh -c 'rm -rf ~/.zshenv ~/.zsh.d && cp -rv dotfiles/.* ~'
