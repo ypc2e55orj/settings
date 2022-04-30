@@ -29,4 +29,4 @@ setopt \
 bindkey -e
 
 source $ZDOTDIR/plugins/plugins.zsh
-for profile in $ZDOTDIR/profile/*.zsh; do source $profile; done
+for profile in $ZDOTDIR/profiles/*.zsh; do source $profile; done
