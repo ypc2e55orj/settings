@@ -9,7 +9,7 @@ if (uname -r | grep WSL > /dev/null);then
     export XMODIFIERS=@im=fcitx
     export DefaultIMMmodule=fcitx
 
-    (builtin command -v fcitx-autostart > /dev/null) && (fcitx-autostart > /dev/null 2>&1 &)
+    (_rc_execute fcitx-autostart > /dev/null 2>&1 &)
 
     [[ -e /tmp/windows-ssh-agent.sock ]] && export SSH_AUTH_SOCK=/tmp/windows-ssh-agent.sock
 

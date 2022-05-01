@@ -12,7 +12,7 @@ _rc_path ~/.local/go/bin
 _rc_path ~/.cabal/bin
 _rc_path ~/.ghcup/bin
 
-_rc_path $(_rc_execute stack path --compiler-bin)
+_rc_path "$(_rc_execute stack path --compiler-bin)"
 
 # jvm
 _rc_source ~/.sdkman/bin/sdkman-init.sh
