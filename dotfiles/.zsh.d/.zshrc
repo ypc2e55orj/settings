@@ -28,5 +28,11 @@ setopt \
 # keybind
 bindkey -e
 
+# rc
+_rc_path() { [[ -d $1 ]] && export PATH=$1:$PATH }
+_rc_eval() { local stdout=$($1); [[ -n $stdout ]] && eval "$stdout" }
+_rc_execute() { (command -v "$1" >/dev/null) && $@ }
+_rc_source() { [[ -f $1 ]] && source "$1" }
+
 source $ZDOTDIR/plugins/plugins.zsh
 for profile in $ZDOTDIR/profiles/*.zsh; do source $profile; done
