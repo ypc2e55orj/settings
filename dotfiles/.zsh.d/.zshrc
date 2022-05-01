@@ -6,12 +6,12 @@ SAVEHIST=10000
 autoload -Uz \
     add-zsh-hook \
     colors \
-    compinit \
+    compinit bashcompinit \
     vcs_info
 
 add-zsh-hook precmd vcs_info
 colors
-compinit
+compinit; bashcompinit
 
 # options
 setopt \
