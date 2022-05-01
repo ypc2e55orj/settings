@@ -36,3 +36,7 @@ _rc_path $PYENV_ROOT/shims
 
 # passerine
 _rc_path ~/.aspen/bin
+
+# php
+_rc_path ~/.phpenv/bin
+eval "$(_rc_execute phpenv init -)"
