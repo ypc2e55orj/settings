@@ -1,8 +1,12 @@
-if (uname -r | grep WSL > /dev/null);then
-    export DISPLAY=${WSL_HOST_IP:=$(cat /etc/resolv.conf | awk /^nameserver/'{print $2}')}:0.0
-    export LIBGL_ALWAYS_INDIRECT=1
+# wsl interop workaround
+# https://github.com/microsoft/WSL/issues/7174#issuecomment-940163080
+fix_interop() {
+    ps -o ppid= -p ${1:-$$} | read ppid
+    [[ $(ps -o cmd= $ppid) = "/init" ]] && echo $ppid || fix_interop $ppid
+}
 
-    export PULSE_SERVER=tcp:$WSL_HOST_IP
+if (uname -r | grep WSL > /dev/null);then
+    export WSL_INTEROP="/run/WSL/$(fix_interop)_interop"
 
     export GTK_IM_MODULE=fcitx
     export QT_IM_MODULE=fcitx
