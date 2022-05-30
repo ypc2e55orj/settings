@@ -1,0 +1,90 @@
+{
+    "editor.accessibilitySupport": "off",
+    "editor.bracketPairColorization.enabled": true,
+    "editor.cursorBlinking": "solid",
+    "editor.cursorStyle": "block",
+    "editor.fontFamily": "'Source Code Pro', 'Noto Sans CJK Mono JP', 'SauseCodePro NF'",
+    "editor.fontSize": 16,
+    "editor.renderWhitespace": "boundary",
+    "editor.rulers": [
+        100
+    ],
+    "editor.suggestSelection": "first",
+    "editor.unicodeHighlight.nonBasicASCII": false,
+    "editor.wordWrap": "on",
+    "files.autoGuessEncoding": true,
+    "files.eol": "\n",
+    "files.exclude": {
+        "**/.DS_Store": false,
+        "**/.git": false,
+        "**/.hg": false,
+        "**/.svn": false,
+        "**/CVS": false
+    },
+    "files.insertFinalNewline": true,
+    "files.simpleDialog.enable": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "files.watcherExclude": {
+        "**/.ammonite": true,
+        "**/.bloop": true,
+        "**/.metals": true
+    },
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    "terminal.integrated.profiles.windows": {
+        "mingw32": {
+            "args": [
+                "--login",
+                "-i"
+            ],
+            "env": {
+                "CHERE_INVOKING": "1",
+                "MSYSTEM": "MINGW32"
+            },
+            "overrideName": true,
+            "path": "C:\\tools\\msys64\\usr\\bin\\bash.exe"
+        },
+        "mingw64": {
+            "args": [
+                "--login",
+                "-i"
+            ],
+            "env": {
+                "CHERE_INVOKING": "1",
+                "MSYSTEM": "MINGW64"
+            },
+            "overrideName": true,
+            "path": "C:\\tools\\msys64\\usr\\bin\\bash.exe"
+        },
+        "msys": {
+            "args": [
+                "--login",
+                "-i"
+            ],
+            "env": {
+                "CHERE_INVOKING": "1",
+                "MSYSTEM": "MSYS"
+            },
+            "overrideName": true,
+            "path": "C:\\tools\\msys64\\usr\\bin\\bash.exe"
+        }
+    },
+    "terminal.integrated.scrollback": 100000,
+    "window.closeWhenEmpty": true,
+    "workbench.colorCustomizations": {
+        "editorCursor.foreground": "#839496",
+        "editorRuler.foreground": "#073642"
+    },
+    "workbench.colorTheme": "Solarized Dark",
+    "workbench.commandPalette.preserveInput": true,
+    "workbench.editor.labelFormat": "medium",
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "workbench.quickOpen.preserveInput": true,
+    "workbench.startupEditor": "none"
+}
