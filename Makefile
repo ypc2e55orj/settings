@@ -1,12 +1,17 @@
 CURL = curl --proto '=https' --tlsv1.2 -LSfs
 
-.PHONY: install
-install: ~/.dir_colors
-	zsh -c 'rm -rf ~/.zshenv ~/.zsh.d && cp -rv dotfiles/.* ~'
-
 .PHONY: help
 help:
 	@awk '/.PHONY:\s[a-z]+$$/{print $$2}' $(MAKEFILE_LIST)
+
+.PHONY: zsh
+zsh:
+	sudo apt update && sudo apt install -y zsh
+	sudo chsh -s /bin/zsh $(USER)
+
+.PHONY: dotfiles
+dotfiles: ~/.dir_colors
+	zsh -c 'rm -rf ~/.zshenv ~/.zsh.d && cp -rv dotfiles/.* ~'
 
 .PHONY: dir_colors
 dir_colors: ~/.dir_colors
