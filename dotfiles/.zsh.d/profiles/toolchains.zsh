@@ -30,6 +30,7 @@ _rc_path ~/.cargo/bin
 export PIPENV_VENV_IN_PROJECT=true
 export PYENV_PYTHON=$PYENV_ROOT/shims/python
 export PYENV_ROOT=~/.pyenv
+_rc_source ~/.rye/env
 
 _rc_path $PYENV_ROOT/bin
 _rc_path $PYENV_ROOT/shims
