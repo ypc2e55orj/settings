@@ -24,10 +24,6 @@ _rc_path $N_PREFIX/bin
 # ros2 galactic
 _rc_source /opt/ros/galactic/setup.zsh
 
-# esp-idf
-export IDF_PATH=/opt/esp-idf
-export IDF_TOOLS_PATH=~/.espressif
-
 # rust
 _rc_path ~/.cargo/bin
 
