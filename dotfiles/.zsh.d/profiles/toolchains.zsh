@@ -12,10 +12,6 @@ _rc_path ~/.local/go/bin
 export N_PREFIX=~/.n
 _rc_path $N_PREFIX/bin
 
-# esp-idf
-export IDF_PATH=/opt/esp-idf
-export IDF_TOOLS_PATH=~/.espressif
-
 # rust
 _rc_path ~/.cargo/bin
 
