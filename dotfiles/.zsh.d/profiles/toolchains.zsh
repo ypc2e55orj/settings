@@ -16,10 +16,8 @@ _rc_path $N_PREFIX/bin
 _rc_path ~/.cargo/bin
 
 # python
-export PIPENV_VENV_IN_PROJECT=true
 export PYENV_PYTHON=$PYENV_ROOT/shims/python
 export PYENV_ROOT=~/.pyenv
-
 _rc_path $PYENV_ROOT/bin
 _rc_path $PYENV_ROOT/shims
 
