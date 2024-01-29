@@ -5,6 +5,9 @@ _rc_path ~/.local/bin
 export EDITOR=vim
 export VISUAL=vim
 
+# sdkman
+_rc_source ~/.sdkman/bin/sdkman-init.sh
+
 # go
 _rc_path ~/.local/go/bin
 
